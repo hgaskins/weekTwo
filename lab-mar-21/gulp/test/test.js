@@ -21,7 +21,15 @@ describe('My first test', function() {
   it('should check ', function() {
     assert.deepEqual(compute.sumAndMultiply(1, 3, 5), [9, 15]);
   });
+
+  //problemFour
+  it('should check ', function() {
+    assert.deepEqual(compute.sumArray([1,2,3]), 5);
+  })
+
 });
+
+
 
 
 // model = 'Tesla';
