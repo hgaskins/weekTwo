@@ -19,8 +19,8 @@ describe('My first test', function() {
 
   //problemThree
   it('should check ', function() {
-    assert.deepEqual(compute.sumAndMultiply(1, 3, 5), 9, 15);
-  })
+    assert.deepEqual(compute.sumAndMultiply(1, 3, 5), [9, 15]);
+  });
 });
 
 
