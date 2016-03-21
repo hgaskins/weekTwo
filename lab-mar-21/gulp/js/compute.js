@@ -108,6 +108,18 @@ function sumArray(arr) {
 sumArray([1, 2, 3]);
 exports.sumArray = sumArray;
 
+//problemFiveFive
+function multiplyArray(arrMult) {
+  var result = 1;
+  for (var i = 0; i < arrMult.length; i++) {
+    result = result * arrMult[i];
+    console.log(arrMult[i]);
+  }
+  return result;
+}
+
+exports.multiplyArray = multiplyArray;
+
 
 // //new function Car
 //

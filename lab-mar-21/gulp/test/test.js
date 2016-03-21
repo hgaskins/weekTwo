@@ -28,7 +28,7 @@ describe('My first test', function() {
   });
   //problemFive
   it('sould check ', function() {
-    assert.equal(compute.multiplyArray([2,4,3]), 24);
+    assert.equal(compute.multiplyArray([2,4,2]), 16);
   });
 
 });
