@@ -25,7 +25,11 @@ describe('My first test', function() {
   //problemFour
   it('should check ', function() {
     assert.equal(compute.sumArray([1,2,3]), 6);
-  })
+  });
+  //problemFive
+  it('sould check ', function() {
+    assert.equal(compute.multiplyArray([2,4,3]), 24);
+  });
 
 });
 

@@ -1,4 +1,4 @@
-"use strict"
+
 /********************************************************
  * Example of TDD on a feature used in Week 1's labwork *
  ********************************************************/
@@ -107,11 +107,7 @@ function sumArray(arr) {
 }
 sumArray([1, 2, 3]);
 exports.sumArray = sumArray;
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 53040a0d67ac4c704d9f189cb14c4060a583f668
 
 // //new function Car
 //
