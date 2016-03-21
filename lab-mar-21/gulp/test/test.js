@@ -14,7 +14,7 @@ describe('My first test', function() {
 
   //problemTwo
   it('should check ', function() {
-    assert.deepEqual(compute.PROBLEMTWO(ARGUMENTS), RESULT);
+    assert.deepEqual(compute.multiply(3,3), 9);
   });
 
 });

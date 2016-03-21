@@ -66,6 +66,15 @@ function sum(numOne, numTwo) {
 
 exports.sum = sum;
 
+//problemTwo multiple function
+function multiply(x, y) {
+  var z = x * y;
+  console.log("The multiple of " + x + " * " + y + " is " + z);
+  return z;
+}
+
+exports.multiply = multiply;
+
 // //new function Car
 //
 // function car(model) {
