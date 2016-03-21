@@ -1,3 +1,4 @@
+"use strict"
 /********************************************************
  * Example of TDD on a feature used in Week 1's labwork *
  ********************************************************/
@@ -58,8 +59,13 @@ function multiple_of_6(num) {
 exports.multiple_of_6 = multiple_of_6;
 
 //problemOne sum function
-function sum(numOne, numTwo) {
-  var result = numOne + numTwo;
+function sum(numOne, numTwo, numThree) {
+  var result;
+  if(numThree) {
+    result = numOne + numTwo + numThree;
+  } else {
+    result = numOne + numTwo;
+  }
   console.log("The sum of " + numOne + " + " + numTwo + " is " + result);
   return result;
 }
@@ -67,13 +73,30 @@ function sum(numOne, numTwo) {
 exports.sum = sum;
 
 //problemTwo multiple function
-function multiply(x, y) {
-  var z = x * y;
+function multiply(x, y, w) {
+  var z;
+  if(w) {
+    z = x * y * w;
+  } else {
+    z = x * y;
+  }
   console.log("The multiple of " + x + " * " + y + " is " + z);
   return z;
 }
 
 exports.multiply = multiply;
+
+//problemThree sumAndMultiply
+function sumAndMultiply(aa, bb, cc) {
+  console.log(aa + " and " + " bb " + " cc " + "sum to " + sum(aa, bb, cc));
+  console.log("the numbers " + aa + " and " + " bb " + " cc " + "have a product of " + multiply(aa, bb, cc));
+  return [sum(aa, bb, cc), multiply(aa, bb, cc)];
+}
+
+exports.sumAndMultiply = sumAndMultiply;
+
+//problemFour
+
 
 // //new function Car
 //
