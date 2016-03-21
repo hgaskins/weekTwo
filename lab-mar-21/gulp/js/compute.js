@@ -57,6 +57,15 @@ function multiple_of_6(num) {
 
 exports.multiple_of_6 = multiple_of_6;
 
+//problemOne sum function
+function sum(numOne, numTwo) {
+  var result = numOne + numTwo;
+  console.log("The sum of " + numOne + " + " + numTwo + " is " + result);
+  return result;
+}
+
+exports.sum = sum;
+
 // //new function Car
 //
 // function car(model) {
