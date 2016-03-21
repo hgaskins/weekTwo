@@ -2,6 +2,7 @@
 /********************************************************
  * Example of TDD on a feature used in Week 1's labwork *
  ********************************************************/
+
 var question = ['first', 'second', 'third'];
 
 function getQuestion(index) {
@@ -88,15 +89,24 @@ exports.multiply = multiply;
 
 //problemThree sumAndMultiply
 function sumAndMultiply(aa, bb, cc) {
-  console.log(aa + " and " + " bb " + " cc " + "sum to " + sum(aa, bb, cc));
-  console.log("the numbers " + aa + " and " + " bb " + " cc " + "have a product of " + multiply(aa, bb, cc));
+  console.log(aa + " and " + bb + cc + "sum to " + sum(aa, bb, cc));
+  console.log("the numbers " + aa + " and " + bb + cc + "have a product of " + multiply(aa, bb, cc));
   return [sum(aa, bb, cc), multiply(aa, bb, cc)];
 }
 
 exports.sumAndMultiply = sumAndMultiply;
 
 //problemFour
-
+function sumArray(arr) {
+  var result = 0;
+  for (var i = 0; i < arr.length; i++) {
+    result += arr[i];
+    console.log(arr[i]);
+  }
+  return result;
+}
+sumArray([1, 2, 3]);
+exports.sumArray = sumArray;
 
 // //new function Car
 //

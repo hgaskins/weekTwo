@@ -24,7 +24,7 @@ describe('My first test', function() {
 
   //problemFour
   it('should check ', function() {
-    assert.deepEqual(compute.sumArray([1,2,3]), 5);
+    assert.equal(compute.sumArray([1,2,3]), 5);
   })
 
 });
