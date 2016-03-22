@@ -10,10 +10,13 @@ function deliveryInRange(minD, maxD) {
   return result;
 }
 
-// //function for drivers needed based on deliveries given
-// function driversNeeded() {
-//
-// }
+//function for drivers needed based on deliveries given
+function driversNeeded(deliveries) {
+  var result = Math.ceil(deliveries/3);
+  return result;
+}
+//testing the driversNeeded function
+console.log(driversNeeded(36));
 
 // //Objects by store
 // var beverton = {
@@ -41,8 +44,10 @@ function deliveryInRange(minD, maxD) {
 // }
 
 //arrays for the min and max of pizza and times
-var minMaxPizza = [[0,4],[0,7],[2,15],[15,35],[12,31],[5,20]];
-var timeStamps = ["8a-9a", "9a-10a","10a-11a", "11a-12p", "12p-1p", "1p-2p", "2p-3p", "3p-4p", "4p-5p", "5p-6p", "6p-7p", "7p-8p", "8p-9p", "10p-11p", "12a-1a", "1a-2a"];
+
+//add and expand the array values to match timeStamps array
+var minMaxPizza = [[0,4],[0,4],[0,4],[0,7], [0,7], [0,7],[2,15],[2,15],[2,15], [15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20], [5,20]];
+var timeStamps = ["8a-9a", "9a-10a","10a-11a", "11a-12p", "12p-1p", "1p-2p", "2p-3p", "3p-4p", "4p-5p", "5p-6p", "6p-7p", "7p-8p", "8p-9p", "9p-10p","10p-11p", "11p-12a","12a-1a", "1a-2a"];
 
 //testContent added to html to test my randoInRange() and deliveryInRange() functions
 var testRando = document.getElementById("test");
@@ -70,12 +75,12 @@ function generateTable() {
     timeCell.appendChild(timeCellText);
     row.appendChild(timeCell);
 
-    for (var j = 0; j < 2; j++) {
+    for (var j = 0; j < 3; j++) {
       //Create a <td> element and a text node, make the text
       //node the contents of the <td>, and put the <td> at
       //the end of the table row
       var cell = document.createElement("td");
-      var cellText = document.createTextNode(randoInRange(minMaxPizza[0][0], minMaxPizza[0][1]));
+      var cellText = document.createTextNode(randoInRange(minMaxPizza[j][0], minMaxPizza[j][1]));
       cell.appendChild(cellText);
       row.appendChild(cell);
     }
