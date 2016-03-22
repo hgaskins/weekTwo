@@ -71,6 +71,11 @@ function sum(numOne, numTwo, numThree) {
   return result;
 }
 
+// var pAddOneIn = document.getElementById('pAddOneIn');
+// var pAddOneOut = document.getElementById('pAddOneOut');
+// pAddOneIn.textContent = "calling the sum() with an arugment of " + arg;
+// pAddOneOut.textContent = "sum() returned " + sum(10, 2);
+
 exports.sum = sum;
 
 //problemTwo multiple function
