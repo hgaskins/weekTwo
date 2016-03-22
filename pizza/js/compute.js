@@ -1,15 +1,32 @@
+//function to create random number between two values
 function randoInRange(min, max) {
   var result = Math.floor(Math.random() * ((max-min)+1) + min);
   return result;
 }
 
-var minMaxPizza = [[0,4],[0,7],[2,15],[15,35],[12-31],[5,20]];
+// function for deliveryInRange
+function deliveryInRange(minD, maxD) {
+  var result = Math.floor(Math.random() * ((maxD-minD)+1) + minD);
+  return result;
+}
+
+// //function for drivers needed based on deliveries given
+// function driversNeeded() {
+//
+// }
+
+//arrays for the min and max of pizza and times
+var minMaxPizza = [[0,4],[0,7],[2,15],[15,35],[12,31],[5,20]];
 var timeStamps = ["8a-9a", "9a-10a","10a-11a", "11a-12p", "12p-1p", "1p-2p", "2p-3p", "3p-4p", "4p-5p", "5p-6p", "6p-7p", "7p-8p", "8p-9p", "10p-11p", "12a-1a", "1a-2a"];
 
-
+//testContent added to html to test my randoInRange() and deliveryInRange() functions
 var testRando = document.getElementById("test");
 testRando.textContent = "random number between 1 an 10 is " + randoInRange(1,10);
 
+var testDelivery = document.getElementById("testTwo");
+testDelivery.textContent = "random number between 20 and 30 is " + deliveryInRange(20,30);
+
+//generateTable() function to generate tables.
 function generateTable() {
   //get the reference for the body
   var body = document.getElementsByTagName("body")[0];
