@@ -1,7 +1,8 @@
-"use strict"
+
 /********************************************************
  * Example of TDD on a feature used in Week 1's labwork *
  ********************************************************/
+
 var question = ['first', 'second', 'third'];
 
 function getQuestion(index) {
@@ -70,6 +71,11 @@ function sum(numOne, numTwo, numThree) {
   return result;
 }
 
+// var pAddOneIn = document.getElementById('pAddOneIn');
+// var pAddOneOut = document.getElementById('pAddOneOut');
+// pAddOneIn.textContent = "calling the sum() with an arugment of " + arg;
+// pAddOneOut.textContent = "sum() returned " + sum(10, 2);
+
 exports.sum = sum;
 
 //problemTwo multiple function
@@ -88,14 +94,36 @@ exports.multiply = multiply;
 
 //problemThree sumAndMultiply
 function sumAndMultiply(aa, bb, cc) {
-  console.log(aa + " and " + " bb " + " cc " + "sum to " + sum(aa, bb, cc));
-  console.log("the numbers " + aa + " and " + " bb " + " cc " + "have a product of " + multiply(aa, bb, cc));
+  console.log(aa + " and " + bb + cc + "sum to " + sum(aa, bb, cc));
+  console.log("the numbers " + aa + " and " + bb + cc + "have a product of " + multiply(aa, bb, cc));
   return [sum(aa, bb, cc), multiply(aa, bb, cc)];
 }
 
 exports.sumAndMultiply = sumAndMultiply;
 
 //problemFour
+function sumArray(arr) {
+  var result = 0;
+  for (var i = 0; i < arr.length; i++) {
+    result += arr[i];
+    console.log(arr[i]);
+  }
+  return result;
+}
+sumArray([1, 2, 3]);
+exports.sumArray = sumArray;
+
+//problemFiveFive
+function multiplyArray(arrMult) {
+  var result = 1;
+  for (var i = 0; i < arrMult.length; i++) {
+    result = result * arrMult[i];
+    console.log(arrMult[i]);
+  }
+  return result;
+}
+
+exports.multiplyArray = multiplyArray;
 
 
 // //new function Car
