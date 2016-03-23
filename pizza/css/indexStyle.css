@@ -30,6 +30,22 @@ p {
   font-family: 'Montserrat', sans-serif;
 }
 
+img {
+  display: flex;
+  padding: 20px;
+  margin: 0 auto;
+}
+h3 {
+  text-decoration: underline;
+}
+h3, h4 {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+}
+
 /*table styles*/
 table {
   display: none;

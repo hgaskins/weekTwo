@@ -143,7 +143,7 @@ for (var k = 0; k < pizzaStores.locationNames.length; k++) {
   generateTable();
   // my adding to DOM = pizzaCounter
   var counter = document.getElementById("totesPizzaBra");
-  counter.textContent = "the total number of pizzas is " + pizzaCounter;
+  counter.textContent = pizzaCounter +  " happy Pizza Odysseys this week!";
 
 }
 
