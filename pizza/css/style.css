@@ -49,9 +49,22 @@ h3, h4 {
 
 /*table styles*/
 table {
-  width: 600px;
+  width: 80%;
   border-collapse: collapse;
+  border: none;
+  text-align: center;
   margin: 0 auto;
+}
+th {
+  border-top: none;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+}
+
+td {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
 }
 
 tr:nth-child(even) {
