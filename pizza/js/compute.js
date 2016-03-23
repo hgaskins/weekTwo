@@ -4,58 +4,45 @@ function randoInRange(min, max) {
   return result;
 }
 
-// function for deliveryInRange
+//to test randoInRange() fucntion
+console.log(randoInRange(1,3));
+
+// function for deliveryInRange()
 function deliveryInRange(minD, maxD) {
-  var result = Math.floor(Math.random() * ((maxD-minD)+1) + minD);
-  return result;
+  var resultDeliveryInRange = Math.floor(Math.random() * ((maxD-minD)+1) + minD);
+  return resultDeliveryInRange;
 }
+
+//to test deliveryInRange() function
+console.log(deliveryInRange(12, 14));
 
 //function for drivers needed based on deliveries given
 function driversNeeded(deliveries) {
-  var result = Math.ceil(deliveries/3);
-  return result;
+  var resultDriversNeeded = Math.ceil(deliveries/3);
+  return resultDriversNeeded;
 }
+
 //testing the driversNeeded function
 console.log(driversNeeded(36));
 
-// //Objects by store
-// var beverton = {
-//   //generate heading
-//   generateTable(beverton);
-//
-// }
-//
-// var hillsboro = {
-//
-// }
-//
-// var downtown = {
-//
-// }
-//
-// var northEast = {
-//
-// }
-//
-// var clackamas = {
-//
-// }
-//
-// var pdxAirport = {
-//
-// }
+//object of locations
+var locations = {
+  //Objects within object location by store
+    locationNames: ["beverton", "hillsboro", "downtown", "northEast", "clackamas", "pdxAirport"],
+    minMaxPizza: [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15], [15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]]
+}
 
 //arrays for the min and max of pizza and times
 
 var minMaxPizza = [[0,4],[0,4],[0,4],[0,7], [0,7], [0,7],[2,15],[2,15],[2,15], [15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20], [5,20]];
 var timeStamps = ["8a-9a", "9a-10a","10a-11a", "11a-12p", "12p-1p", "1p-2p", "2p-3p", "3p-4p", "4p-5p", "5p-6p", "6p-7p", "7p-8p", "8p-9p", "9p-10p","10p-11p", "11p-12a","12a-1a", "1a-2a"];
 
-//testContent added to html to test my randoInRange() and deliveryInRange() functions
-var testRando = document.getElementById("test");
-testRando.textContent = "random number between 1 an 10 is " + randoInRange(1,10);
-
-var testDelivery = document.getElementById("testTwo");
-testDelivery.textContent = "random number between 20 and 30 is " + deliveryInRange(20,30);
+// //testContent added to html to test my randoInRange() and deliveryInRange() functions
+// var testRando = document.getElementById("test");
+// testRando.textContent = "random number between 1 an 10 is " + randoInRange(1,10);
+//
+// var testDelivery = document.getElementById("testTwo");
+// testDelivery.textContent = "random number between 20 and 30 is " + deliveryInRange(20,30);
 
 //generateTable() function to generate tables.
 function generateTable() {
@@ -65,7 +52,23 @@ function generateTable() {
   //creates a <table> element and a <tbody> element
   var tbl = document.createElement("table");
   var tblBody = document.createElement("tbody");
-  // var tblHead = document.createElement("th");
+
+  //TABLEHEAD TITLES!
+  //creating a <thead> and puts it in the <table>
+  var tblHead = document.createElement("thead");
+  tbl.appendChild(tblHead);
+
+  //creates shopHead <tr> and puts it in <thead>
+  var shopHead = document.createElement("tr");
+  tblHead.appendChild(shopHead);
+
+  //creates the <th> in the shopHead <tr>
+  var shopLoc = document.createElement("th");
+  //sets the colspan attribute of tbl to 4;
+  shopLoc.setAttribute("colspan", "4");
+  shopHead.appendChild(shopLoc);
+
+  //NOW NEED TO FIGURE OUT HOW TO PULL LOCATION TITLES
 
   //creating all cells
   for (var i = 0; i < 18; i++) {
@@ -75,16 +78,6 @@ function generateTable() {
     var timeCellText = document.createTextNode(timeStamps[i]);
     timeCell.appendChild(timeCellText);
     row.appendChild(timeCell);
-
-    // for (var j = 0; j < 3; j++) {
-    //   //Create a <td> element and a text node, make the text
-    //   //node the contents of the <td>, and put the <td> at
-    //   //the end of the table row
-    //   var cell = document.createElement("td");
-    //   var cellText = document.createTextNode(randoInRange(minMaxPizza[j][0], minMaxPizza[j][1]));
-    //   cell.appendChild(cellText);
-    //   row.appendChild(cell);
-    // }
 
     //code to generate number of pizzas
     var cell = document.createElement("td");
@@ -117,6 +110,17 @@ function generateTable() {
   //appends <table> into <body>
   body.appendChild(tbl);
   //sets the border attribute of the tbl to 2;
-  tbl.setAttribute("border", "2");
+  tbl.setAttribute("border", "10");
 }
-generateTable();
+
+// generateTable();
+
+// generateTable(locations.locationNames[0]);
+
+function generateAllTables(r) {
+  for (var i = 0; i < r.locationNames.length; i++) {
+    generateTable(r.locationNames[i]);
+  }
+}
+
+generateAllTables(locations);
