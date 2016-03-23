@@ -1,0 +1,36 @@
+
+html {
+  background-color: #fdfef0;
+}
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+  background-color: #004fef;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em;
+  font-style: oblique;
+}
+
+nav a {
+  font-family: 'Montserrat', sans-serif;
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+  text-decoration: none;
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/*table styles*/
+table {
+  display: none;
+}
