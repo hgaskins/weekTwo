@@ -4,6 +4,8 @@ function randoInRange(min, max) {
   return result;
 }
 
+var pizzaCounter = 0;
+
 //to test randoInRange() fucntion
 console.log(randoInRange(1,3));
 
@@ -106,6 +108,7 @@ for (var k = 0; k < pizzaStores.locationNames.length; k++) {
         //code to generate number of pizzas
         var cell = document.createElement("td");
         var numberOfPizzas = randoInRange(minMaxPizza[i][0], minMaxPizza[i][1]);
+        pizzaCounter = pizzaCounter + numberOfPizzas;
         var cellText = document.createTextNode(numberOfPizzas);
         cell.appendChild(cellText);
         row.appendChild(cell);
@@ -136,10 +139,13 @@ for (var k = 0; k < pizzaStores.locationNames.length; k++) {
       //sets the border attribute of the tbl to 2;
       tbl.setAttribute("border", "10");
   }
-generateTable();
+  // call generateTable();
+  generateTable();
+  // my adding to DOM = pizzaCounter
+  var counter = document.getElementById("totesPizzaBra");
+  counter.textContent = "the total number of pizzas is " + pizzaCounter;
+
 }
 
-// generateTable();
-
-// // generateTable(pizzaStores.locationNames[0]);
-// generateAllTables(pizzaStores);
+// var counterIndexPage = document.getElementById('happyPizzaNumber');
+// counterIndexPage.textContent = " Happy Pizza Odysseys This Week!";
