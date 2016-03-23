@@ -20,6 +20,8 @@ console.log(driversNeeded(36));
 
 // //Objects by store
 // var beverton = {
+//   //generate heading
+//   generateTable(beverton);
 //
 // }
 //
@@ -67,7 +69,7 @@ function generateTable() {
   // var tblHead = document.createElement("th");
 
   //creating all cells
-  for (var i = 0; i < 16; i++) {
+  for (var i = 0; i < 18; i++) {
     //creates table row
     var row = document.createElement("tr");
     var timeCell = document.createElement("td");
@@ -75,15 +77,36 @@ function generateTable() {
     timeCell.appendChild(timeCellText);
     row.appendChild(timeCell);
 
-    for (var j = 0; j < 3; j++) {
-      //Create a <td> element and a text node, make the text
-      //node the contents of the <td>, and put the <td> at
-      //the end of the table row
-      var cell = document.createElement("td");
-      var cellText = document.createTextNode(randoInRange(minMaxPizza[j][0], minMaxPizza[j][1]));
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-    }
+    // for (var j = 0; j < 3; j++) {
+    //   //Create a <td> element and a text node, make the text
+    //   //node the contents of the <td>, and put the <td> at
+    //   //the end of the table row
+    //   var cell = document.createElement("td");
+    //   var cellText = document.createTextNode(randoInRange(minMaxPizza[j][0], minMaxPizza[j][1]));
+    //   cell.appendChild(cellText);
+    //   row.appendChild(cell);
+    // }
+
+    //code to generate number of pizzas
+    var cell = document.createElement("td");
+    var numberOfPizzas = randoInRange(minMaxPizza[i][0], minMaxPizza[i][1]);
+    var cellText = document.createTextNode(numberOfPizzas);
+    cell.appendChild(cellText);
+    row.appendChild(cell);
+
+
+    //code to generate number of deliveries
+    var cell = document.createElement("td");
+    var numberOfDeliveries = randoInRange(0, numberOfPizzas);
+    var cellText = document.createTextNode(numberOfDeliveries);
+    cell.appendChild(cellText);
+    row.appendChild(cell);
+
+    //code to generate number of drivers
+    var cell = document.createElement("td");
+    var cellText = document.createTextNode(driversNeeded(numberOfDeliveries));
+    cell.appendChild(cellText);
+    row.appendChild(cell);
 
     //add the row to the end of the table body
     tblBody.appendChild(row);
