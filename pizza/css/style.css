@@ -48,9 +48,15 @@ h3, h4 {
 
 
 /*table styles*/
-#table {
+table {
   width: 600px;
+  border-collapse: collapse;
+  margin: 0 auto;
 }
+
+tr:nth-child(even) {
+  background: #ccc;
+  }
 
 .tableHead {
   padding: 7px 10px 10px 10px;

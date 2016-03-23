@@ -137,7 +137,7 @@ for (var k = 0; k < pizzaStores.locationNames.length; k++) {
       //appends <table> into <body>
       body.appendChild(tbl);
       //sets the border attribute of the tbl to 2;
-      tbl.setAttribute("border", "10");
+      // tbl.setAttribute("border", "10");
   }
   // call generateTable();
   generateTable();
