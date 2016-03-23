@@ -25,10 +25,11 @@ function driversNeeded(deliveries) {
 //testing the driversNeeded function
 console.log(driversNeeded(36));
 
-//object of locations
-var locations = {
+//object of pizzaStores
+var pizzaStores = {
   //Objects within object location by store
     locationNames: ["beverton", "hillsboro", "downtown", "northEast", "clackamas", "pdxAirport"],
+    colHeadings: ["time", "numberPizzas", "numberDevlieries", "numberOfDrivers"],
     minMaxPizza: [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15], [15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]]
 }
 
@@ -44,83 +45,101 @@ var timeStamps = ["8a-9a", "9a-10a","10a-11a", "11a-12p", "12p-1p", "1p-2p", "2p
 // var testDelivery = document.getElementById("testTwo");
 // testDelivery.textContent = "random number between 20 and 30 is " + deliveryInRange(20,30);
 
+
+//for loop to loop through the pizzaStores array
+for (var k = 0; k < pizzaStores.locationNames.length; k++) {
 //generateTable() function to generate tables.
-function generateTable() {
-  //get the reference for the body
-  var body = document.getElementsByTagName("body")[0];
+  function generateTable() {
+      //get the reference for the body
+      var body = document.getElementsByTagName("body")[0];
 
-  //creates a <table> element and a <tbody> element
-  var tbl = document.createElement("table");
-  var tblBody = document.createElement("tbody");
+      //creates a <table> element and a <tbody> element
+      var tbl = document.createElement("table");
+      var tblBody = document.createElement("tbody");
 
-  //TABLEHEAD TITLES!
-  //creating a <thead> and puts it in the <table>
-  var tblHead = document.createElement("thead");
-  tbl.appendChild(tblHead);
+      //TABLEHEAD TITLES!
+      //creating a <thead> and puts it in the <table>
+      var tblHead = document.createElement("thead");
+      tbl.appendChild(tblHead);
 
-  //creates shopHead <tr> and puts it in <thead>
-  var shopHead = document.createElement("tr");
-  tblHead.appendChild(shopHead);
+      //creates shopHead <tr> and puts it in <thead>
+      var shopHead = document.createElement("tr");
+      tblHead.appendChild(shopHead);
 
-  //creates the <th> in the shopHead <tr>
-  var shopLoc = document.createElement("th");
-  //sets the colspan attribute of tbl to 4;
-  shopLoc.setAttribute("colspan", "4");
-  shopHead.appendChild(shopLoc);
+      //creates the <th> in the shopHead <tr>
+      var shopLoc = document.createElement("th");
+      //sets the colspan attribute of tbl to 4;
+      shopLoc.setAttribute("colspan", "4");
+      shopHead.appendChild(shopLoc);
 
-  //NOW NEED TO FIGURE OUT HOW TO PULL LOCATION TITLES
-
-  //creating all cells
-  for (var i = 0; i < 18; i++) {
-    //creates table row
-    var row = document.createElement("tr");
-    var timeCell = document.createElement("td");
-    var timeCellText = document.createTextNode(timeStamps[i]);
-    timeCell.appendChild(timeCellText);
-    row.appendChild(timeCell);
-
-    //code to generate number of pizzas
-    var cell = document.createElement("td");
-    var numberOfPizzas = randoInRange(minMaxPizza[i][0], minMaxPizza[i][1]);
-    var cellText = document.createTextNode(numberOfPizzas);
-    cell.appendChild(cellText);
-    row.appendChild(cell);
+      //pulls the text for the shopLoc <th> from the pizzaStores.locationNames array
+      // console.log(r.locationNames[i]);
+      var locName = document.createTextNode(pizzaStores.locationNames[k]);
+      shopLoc.appendChild(locName);
 
 
-    //code to generate number of deliveries
-    var cell = document.createElement("td");
-    var numberOfDeliveries = randoInRange(0, numberOfPizzas);
-    var cellText = document.createTextNode(numberOfDeliveries);
-    cell.appendChild(cellText);
-    row.appendChild(cell);
+      //creates the colHead <tr> and puts it in <thead>
+      var colHead = document.createElement("tr");
+      tblHead.appendChild(colHead);
 
-    //code to generate number of drivers
-    var cell = document.createElement("td");
-    var cellText = document.createTextNode(driversNeeded(numberOfDeliveries));
-    cell.appendChild(cellText);
-    row.appendChild(cell);
+      //creates the <th>s in the colHead <tr>
+        for (var j = 0; j < pizzaStores.colHeadings.length; j++) {
+          //creates the <th>s in the colHead <tr>
+          var colTitle = document.createElement("th");
+          colHead.appendChild(colTitle);
 
-    //add the row to the end of the table body
-    tblBody.appendChild(row);
-}
-  // //add in my table headers to do later
-  // tblHead = document.createElement();
-  //put the <tbody> in the <table>
-  tbl.appendChild(tblBody);
-  //appends <table> into <body>
-  body.appendChild(tbl);
-  //sets the border attribute of the tbl to 2;
-  tbl.setAttribute("border", "10");
+          //pulls the text for the colTitle <th> rom the pizzaStores.colHeadings array
+          var colName = document.createTextNode(pizzaStores.colHeadings[j]);
+          colTitle.appendChild(colName);
+
+      }
+
+      //creating all cells
+      for (var i = 0; i < 18; i++) {
+        //creates table row
+        var row = document.createElement("tr");
+        var timeCell = document.createElement("td");
+        var timeCellText = document.createTextNode(timeStamps[i]);
+        timeCell.appendChild(timeCellText);
+        row.appendChild(timeCell);
+
+        //code to generate number of pizzas
+        var cell = document.createElement("td");
+        var numberOfPizzas = randoInRange(minMaxPizza[i][0], minMaxPizza[i][1]);
+        var cellText = document.createTextNode(numberOfPizzas);
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+
+
+        //code to generate number of deliveries
+        var cell = document.createElement("td");
+        var numberOfDeliveries = randoInRange(0, numberOfPizzas);
+        var cellText = document.createTextNode(numberOfDeliveries);
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+
+        //code to generate number of drivers
+        var cell = document.createElement("td");
+        var cellText = document.createTextNode(driversNeeded(numberOfDeliveries));
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+
+        //add the row to the end of the table body
+        tblBody.appendChild(row);
+    }
+      // //add in my table headers to do later
+      // tblHead = document.createElement();
+      //put the <tbody> in the <table>
+      tbl.appendChild(tblBody);
+      //appends <table> into <body>
+      body.appendChild(tbl);
+      //sets the border attribute of the tbl to 2;
+      tbl.setAttribute("border", "10");
+  }
+generateTable();
 }
 
 // generateTable();
 
-// generateTable(locations.locationNames[0]);
-
-function generateAllTables(r) {
-  for (var i = 0; i < r.locationNames.length; i++) {
-    generateTable(r.locationNames[i]);
-  }
-}
-
-generateAllTables(locations);
+// // generateTable(pizzaStores.locationNames[0]);
+// generateAllTables(pizzaStores);
