@@ -9,14 +9,14 @@ var pizzaCounter = 0;
 //to test randoInRange() fucntion
 console.log(randoInRange(1,3));
 
-// function for deliveryInRange()
-function deliveryInRange(minD, maxD) {
-  var resultDeliveryInRange = Math.floor(Math.random() * ((maxD-minD)+1) + minD);
-  return resultDeliveryInRange;
-}
+// // function for randoInRange()
+// function randoInRange(minD, maxD) {
+//   var resultrandoInRange = Math.floor(Math.random() * ((maxD-minD)+1) + minD);
+//   return resultrandoInRange;
+// }
 
-//to test deliveryInRange() function
-console.log(deliveryInRange(12, 14));
+//to test randoInRange() function
+console.log(randoInRange(12, 14));
 
 //function for drivers needed based on deliveries given
 function driversNeeded(deliveries) {
@@ -60,12 +60,12 @@ var minMaxPizza = [[0,4],[0,4],[0,4],
                     [5,20],[5,20], [5,20]];
 var timeStamps = ["8a-9a", "9a-10a","10a-11a", "11a-12p", "12p-1p", "1p-2p", "2p-3p", "3p-4p", "4p-5p", "5p-6p", "6p-7p", "7p-8p", "8p-9p", "9p-10p","10p-11p", "11p-12a","12a-1a", "1a-2a"];
 
-// //testContent added to html to test my randoInRange() and deliveryInRange() functions
+// //testContent added to html to test my randoInRange() and randoInRange() functions
 // var testRando = document.getElementById("test");
 // testRando.textContent = "random number between 1 an 10 is " + randoInRange(1,10);
 //
 // var testDelivery = document.getElementById("testTwo");
-// testDelivery.textContent = "random number between 20 and 30 is " + deliveryInRange(20,30);
+// testDelivery.textContent = "random number between 20 and 30 is " + randoInRange(20,30);
 
 
 //for loop to loop through the pizzaStores array
