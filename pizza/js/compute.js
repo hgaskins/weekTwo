@@ -64,18 +64,56 @@ var hillsboroStore = new pizzaStoreConstructor("hillsboro", [[1,3],[1,3],[1,3],
                                 [5,12],[5,12],[5,12],
                                 [6,16],[6,16],[6,16]], pizzaArray);
 
-//constructor for the downtown specific store
-var downtownStore = new pizzaStoreConstructor("downtown", [[0,4],[0,4],[0,4],
-                                [0,7],[0,7],[0,7],
-                                [2,15],[2,15],[2,15],
-                                [10,26],[10,26],[10,26],
-                                [8,22],[8,22],[8,22],
-                                [0,2],[0,2],[0,2]], [[0,4],[0,4],[0,4],
-                                [0,4],[0,4],[0,4],
-                                [1,4],[1,4],[1,4],
-                                [4,6],[4,6],[4,6],
-                                [7,15],[7,15],[7,15],
-                                [2,8],[2,8],[2,8]], pizzaArray);
+// //constructor for the downtown specific store
+// var downtownStore = new pizzaStoreConstructor("downtown", [[0,4],[0,4],[0,4],
+//                                 [0,7],[0,7],[0,7],
+//                                 [2,15],[2,15],[2,15],
+//                                 [10,26],[10,26],[10,26],
+//                                 [8,22],[8,22],[8,22],
+//                                 [0,2],[0,2],[0,2]], [[0,4],[0,4],[0,4],
+//                                 [0,4],[0,4],[0,4],
+//                                 [1,4],[1,4],[1,4],
+//                                 [4,6],[4,6],[4,6],
+//                                 [7,15],[7,15],[7,15],
+//                                 [2,8],[2,8],[2,8]], pizzaArray);
+// //constructor for the northeast specific store
+// var northeastStore = new pizzaStoreConstructor("northeast", [[0,4],[0,4],[0,4],
+//                                 [0,7],[0,7],[0,7],
+//                                 [5,15],[5,15],[5,15],
+//                                 [25,39],[25,39],[25,39],
+//                                 [22,36],[22,36],[22,26],
+//                                 [5,21],[5,21],[5,21]], [[0,4],[0,4],[0,4],
+//                                 [0,4],[0,4],[0,4],
+//                                 [0,4],[0,4],[0,4],
+//                                 [13,18],[13,18],[13,18],
+//                                 [5,22],[5,22],[5,22],
+//                                 [16,31],[16,31],[16,31]], pizzaArray);
+//
+// //constructor for the clackamas specific store
+// var clackamasStore = new pizzaStoreConstructor("clackamas", [[2,7],[2,7],[2,7],
+//                                 [3,8],[3,8],[3,8],
+//                                 [1,5],[1,5],[1,5],
+//                                 [5,13],[5,13],[5,13],
+//                                 [22,41],[22,41],[22,41],
+//                                 [15,20],[15,20],[15,20]], [[3,5],[3,5],[3,5],
+//                                 [3,9],[3,9],[3,9],
+//                                 [1,4],[1,4],[1,4],
+//                                 [2,4],[2,4],[2,4],
+//                                 [15,42],[15,42],[15,42],
+//                                 [6,21],[6,21],[6,21]], pizzaArray);
+//
+// //constructor for the pdxAirport specific store
+// var pdxAirportStore = new pizzaStoreConstructor("pdxAirport", [[2,7],[2,7],[2,7],
+//                                 [3,8],[3,8],[3,8],
+//                                 [1,5],[1,5],[1,5],
+//                                 [5,13],[5,13],[5,13],
+//                                 [22,41],[22,41],[22,41],
+//                                 [15,20],[15,20],[15,20]], [[3,5],[3,5],[3,5],
+//                                 [3,9],[3,9],[3,9],
+//                                 [1,4],[1,4],[1,4],
+//                                 [2,4],[2,4],[2,4],
+//                                 [15,42],[15,42],[15,42],
+//                                 [6,21],[6,21],[6,21]], pizzaArray);
 
 
 //object of pizzaStores
@@ -109,11 +147,8 @@ var timeStamps = ["8a-9a", "9a-10a","10a-11a", "11a-12p", "12p-1p", "1p-2p", "2p
 // var testDelivery = document.getElementById("testTwo");
 // testDelivery.textContent = "random number between 20 and 30 is " + randoInRange(20,30);
 
-
-//for loop to loop through the pizzaStores array
-for (var k = 0; k < pizzaStores.locationNames.length; k++) {
 //generateTable() function to generate tables.
-  function generateTable(minPizzas, maxPizzas) {
+function generateTable(storeObject) {
       //get the reference for the body
       var body = document.getElementsByTagName("body")[0];
 
@@ -137,9 +172,10 @@ for (var k = 0; k < pizzaStores.locationNames.length; k++) {
       shopHead.appendChild(shopLoc);
 
       //pulls the text for the shopLoc <th> from the pizzaStores.locationNames array
-      // console.log(r.locationNames[i]);
-      var locName = document.createTextNode(pizzaStores.locationNames[k]);
+      // // console.log(r.locationNames[i]);
+      var locName = document.createTextNode(storeObject.loc);
       shopLoc.appendChild(locName);
+      console.log(storeObject.loc);
 
 
       //creates the colHead <tr> and puts it in <thead>
@@ -169,7 +205,7 @@ for (var k = 0; k < pizzaStores.locationNames.length; k++) {
 
           //code to generate number of pizzas
           var cell = document.createElement("td");
-          var numberOfPizzas = randoInRange(minPizzas, maxPizzas);
+          var numberOfPizzas = randoInRange(storeObject.minMaxPizza[i][0],storeObject.minMaxPizza[i][1]);
           pizzaCounter = pizzaCounter + numberOfPizzas;
           var cellText = document.createTextNode(numberOfPizzas);
           cell.appendChild(cellText);
@@ -178,7 +214,7 @@ for (var k = 0; k < pizzaStores.locationNames.length; k++) {
 
           //code to generate number of deliveries
           var cell = document.createElement("td");
-          var numberOfDeliveries = randoInRange(0, numberOfPizzas);
+          var numberOfDeliveries = randoInRange(storeObject.minMaxDeliveries[i][0], storeObject.minMaxDeliveries[i][1]);
           var cellText = document.createTextNode(numberOfDeliveries);
           cell.appendChild(cellText);
           row.appendChild(cell);
@@ -201,20 +237,33 @@ for (var k = 0; k < pizzaStores.locationNames.length; k++) {
       //sets the border attribute of the tbl to 2;
       // tbl.setAttribute("border", "10");
   }
-  // call generateTable();
-
-  // my adding to DOM = pizzaCounter
-  var counter = document.getElementById("totesPizzaBra");
-  counter.textContent = pizzaCounter +  " happy Pizza Odysseys this week!";
-
-}
 
 
-for (var zz = 0; zz < pizzaArray.length; zz++) {
-  console.log(pizzaArray[zz].minMaxPizza.length);
-  for (var ii = 0; ii < pizzaArray[zz].minMaxPizza.length; ii++) {
-    console.log('min = ' +    pizzaArray[0].minMaxPizza[ii][0] + '  max = ' + pizzaArray[0].minMaxPizza[ii][1]);
-  }
-  generateTable(pizzaArray[zz].minMaxPizza[0][0],pizzaArray[zz].minMaxPizza[0][1]);
+//for loop to loop through the pizzaStores array---> now unnecessary??
+// for (var k = 0; k < pizzaStores.locationNames.length; k++) {
+//   //to test pizzaArray[k]
+//   // console.log(pizzaArray[k].loc);
+//
+//   // call generateTable();
+// }
 
+
+
+// my adding to DOM = pizzaCounter
+var counter = document.getElementById("totesPizzaBra");
+counter.textContent = pizzaCounter +  " happy Pizza Odysseys this week!";
+
+
+
+
+// for (var zz = 0; zz < pizzaArray.length; zz++) {
+//     console.log(pizzaArray[zz].loc);
+//   for (var ii = 0; ii < pizzaArray[zz].minMaxPizza.length; ii++) {
+//     console.log('min = ' +    pizzaArray[zz].minMaxPizza[ii][0] + '  max = ' + pizzaArray[zz].minMaxPizza[ii][1]);
+//   }
+//   generateTable(pizzaArray[zz].minMaxPizza[0][0],pizzaArray[zz].minMaxPizza[0][1]);
+// }
+
+for (var qq = 0; qq < pizzaArray.length; qq++) {
+  generateTable(pizzaArray[qq]);
 }
