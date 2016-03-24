@@ -1,13 +1,20 @@
 
 html {
-  background-color: #fdfef0;
+  background-color: #FFFEFF;
+}
+
+#banner {
+  width: 100%;
+  height: 20%;
+  background-image: url("http://thumbs.dreamstime.com/x/pizza-seamless-hand-drawn-doodle-pattern-vector-illustration-backgrounds-card-posters-banners-textile-prints-cover-web-design-57720797.jpg");
+  padding: 180px 0;
 }
 h1 {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 3em;
   text-align: center;
-  background-color: #004fef;
+  background-color: #980704;
   padding: 20px;
 }
 

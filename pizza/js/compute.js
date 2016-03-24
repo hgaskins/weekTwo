@@ -27,17 +27,37 @@ function driversNeeded(deliveries) {
 //testing the driversNeeded function
 console.log(driversNeeded(36));
 
+//contructor function to create a pizzaStores template
+function pizzaStores(hours, location, pizzaRange, deliveriesRange) {
+  this.hours = hours;
+  this.location = location;
+  this.minMaxPizza = pizzaRange;
+  this.minMaxDeliveries = deliveriesRange;
+}
+//to test the pizzaStores function
+
+
 //object of pizzaStores
 var pizzaStores = {
   //Objects within object location by store
     locationNames: ["beverton", "hillsboro", "downtown", "northEast", "clackamas", "pdxAirport"],
     colHeadings: ["time", "numberPizzas", "numberDevlieries", "numberOfDrivers"],
-    minMaxPizza: [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15], [15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]]
+    minMaxPizza: [[0,4],[0,4],[0,4],
+                  [0,7],[0,7],[0,7],
+                  [2,15],[2,15],[2,15],
+                  [15,35],[15,35],[15,35],
+                  [12,31],[12,31],[12,31],
+                  [5,20],[5,20],[5,20]]
 }
 
 //arrays for the min and max of pizza and times
 
-var minMaxPizza = [[0,4],[0,4],[0,4],[0,7], [0,7], [0,7],[2,15],[2,15],[2,15], [15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20], [5,20]];
+var minMaxPizza = [[0,4],[0,4],[0,4],
+                    [0,7],[0,7],[0,7],
+                    [2,15],[2,15],[2,15],
+                    [15,35],[15,35],[15,35],
+                    [12,31],[12,31],[12,31],
+                    [5,20],[5,20], [5,20]];
 var timeStamps = ["8a-9a", "9a-10a","10a-11a", "11a-12p", "12p-1p", "1p-2p", "2p-3p", "3p-4p", "4p-5p", "5p-6p", "6p-7p", "7p-8p", "8p-9p", "9p-10p","10p-11p", "11p-12a","12a-1a", "1a-2a"];
 
 // //testContent added to html to test my randoInRange() and deliveryInRange() functions
