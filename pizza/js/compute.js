@@ -27,14 +27,55 @@ function driversNeeded(deliveries) {
 //testing the driversNeeded function
 console.log(driversNeeded(36));
 
+//code block to add in constructor function along with
+//store constructors
+//empty Array
+var pizzaArray = [];
+
 //contructor function to create a pizzaStores template
-function pizzaStores(hours, location, pizzaRange, deliveriesRange) {
-  this.hours = hours;
-  this.location = location;
+function pizzaStoreConstructor(loc, pizzaRange, deliveriesRange, targetArray) {
+  this.loc = loc;
   this.minMaxPizza = pizzaRange;
   this.minMaxDeliveries = deliveriesRange;
+  targetArray.push(this);
 }
-//to test the pizzaStores function
+//constructor for beverton specific store
+var bevertonStore = new pizzaStoreConstructor("beverton", [[0,4],[0,4],[0,4],
+                                [0,7],[0,7],[0,7],
+                                [2,15],[2,15],[2,15],
+                                [15,35],[15,35],[15,35],
+                                [12,31],[12,31],[12,31],
+                                [5,20],[5,20],[5,20]], [[0,4],[0,4],[0,4],
+                                [0,4],[0,4],[0,4],
+                                [1,4],[1,4],[1,4],
+                                [3,8],[3,8],[3,8],
+                                [5,12],[5,12],[5,12],
+                                [6,11],[6,11],[6,11]], pizzaArray);
+//constructor for hillsboro specific store
+var hillsboroStore = new pizzaStoreConstructor("hillsboro", [[1,3],[1,3],[1,3],
+                                [5,9],[5,9],[5,9],
+                                [2,13],[2,13],[2,13],
+                                [18,32],[18,32],[18,32],
+                                [1,3],[1,3],[1,3],
+                                [8,20],[8,20],[8,20]], [[1,7],[1,7],[1,7],
+                                [2,8],[2,8],[2,8],
+                                [1,6],[1,6],[1,6],
+                                [3,9],[3,9],[3,9],
+                                [5,12],[5,12],[5,12],
+                                [6,16],[6,16],[6,16]], pizzaArray);
+
+//constructor for the downtown specific store
+var downtownStore = new pizzaStoreConstructor("downtown", [[0,4],[0,4],[0,4],
+                                [0,7],[0,7],[0,7],
+                                [2,15],[2,15],[2,15],
+                                [10,26],[10,26],[10,26],
+                                [8,22],[8,22],[8,22],
+                                [0,2],[0,2],[0,2]], [[0,4],[0,4],[0,4],
+                                [0,4],[0,4],[0,4],
+                                [1,4],[1,4],[1,4],
+                                [4,6],[4,6],[4,6],
+                                [7,15],[7,15],[7,15],
+                                [2,8],[2,8],[2,8]], pizzaArray);
 
 
 //object of pizzaStores
@@ -42,22 +83,23 @@ var pizzaStores = {
   //Objects within object location by store
     locationNames: ["beverton", "hillsboro", "downtown", "northEast", "clackamas", "pdxAirport"],
     colHeadings: ["time", "numberPizzas", "numberDevlieries", "numberOfDrivers"],
-    minMaxPizza: [[0,4],[0,4],[0,4],
-                  [0,7],[0,7],[0,7],
-                  [2,15],[2,15],[2,15],
-                  [15,35],[15,35],[15,35],
-                  [12,31],[12,31],[12,31],
-                  [5,20],[5,20],[5,20]]
+    //initial minMaxPizza array.... not sure if I need this anymore....
+    // minMaxPizza: [[0,4],[0,4],[0,4],
+    //               [0,7],[0,7],[0,7],
+    //               [2,15],[2,15],[2,15],
+    //               [15,35],[15,35],[15,35],
+    //               [12,31],[12,31],[12,31],
+    //               [5,20],[5,20],[5,20]]
 }
 
 //arrays for the min and max of pizza and times
-
-var minMaxPizza = [[0,4],[0,4],[0,4],
-                    [0,7],[0,7],[0,7],
-                    [2,15],[2,15],[2,15],
-                    [15,35],[15,35],[15,35],
-                    [12,31],[12,31],[12,31],
-                    [5,20],[5,20], [5,20]];
+//previous static array for pizza ranges
+// var minMaxPizza = [[0,4],[0,4],[0,4],
+//                     [0,7],[0,7],[0,7],
+//                     [2,15],[2,15],[2,15],
+//                     [15,35],[15,35],[15,35],
+//                     [12,31],[12,31],[12,31],
+//                     [5,20],[5,20], [5,20]];
 var timeStamps = ["8a-9a", "9a-10a","10a-11a", "11a-12p", "12p-1p", "1p-2p", "2p-3p", "3p-4p", "4p-5p", "5p-6p", "6p-7p", "7p-8p", "8p-9p", "9p-10p","10p-11p", "11p-12a","12a-1a", "1a-2a"];
 
 // //testContent added to html to test my randoInRange() and randoInRange() functions
@@ -71,7 +113,7 @@ var timeStamps = ["8a-9a", "9a-10a","10a-11a", "11a-12p", "12p-1p", "1p-2p", "2p
 //for loop to loop through the pizzaStores array
 for (var k = 0; k < pizzaStores.locationNames.length; k++) {
 //generateTable() function to generate tables.
-  function generateTable() {
+  function generateTable(minPizzas, maxPizzas) {
       //get the reference for the body
       var body = document.getElementsByTagName("body")[0];
 
@@ -116,40 +158,40 @@ for (var k = 0; k < pizzaStores.locationNames.length; k++) {
 
       }
 
-      //creating all cells
-      for (var i = 0; i < 18; i++) {
-        //creates table row
-        var row = document.createElement("tr");
-        var timeCell = document.createElement("td");
-        var timeCellText = document.createTextNode(timeStamps[i]);
-        timeCell.appendChild(timeCellText);
-        row.appendChild(timeCell);
+        //creating all cells
+        for (var i = 0; i < 18; i++) {
+          //creates table row
+          var row = document.createElement("tr");
+          var timeCell = document.createElement("td");
+          var timeCellText = document.createTextNode(timeStamps[i]);
+          timeCell.appendChild(timeCellText);
+          row.appendChild(timeCell);
 
-        //code to generate number of pizzas
-        var cell = document.createElement("td");
-        var numberOfPizzas = randoInRange(minMaxPizza[i][0], minMaxPizza[i][1]);
-        pizzaCounter = pizzaCounter + numberOfPizzas;
-        var cellText = document.createTextNode(numberOfPizzas);
-        cell.appendChild(cellText);
-        row.appendChild(cell);
+          //code to generate number of pizzas
+          var cell = document.createElement("td");
+          var numberOfPizzas = randoInRange(minPizzas, maxPizzas);
+          pizzaCounter = pizzaCounter + numberOfPizzas;
+          var cellText = document.createTextNode(numberOfPizzas);
+          cell.appendChild(cellText);
+          row.appendChild(cell);
 
 
-        //code to generate number of deliveries
-        var cell = document.createElement("td");
-        var numberOfDeliveries = randoInRange(0, numberOfPizzas);
-        var cellText = document.createTextNode(numberOfDeliveries);
-        cell.appendChild(cellText);
-        row.appendChild(cell);
+          //code to generate number of deliveries
+          var cell = document.createElement("td");
+          var numberOfDeliveries = randoInRange(0, numberOfPizzas);
+          var cellText = document.createTextNode(numberOfDeliveries);
+          cell.appendChild(cellText);
+          row.appendChild(cell);
 
-        //code to generate number of drivers
-        var cell = document.createElement("td");
-        var cellText = document.createTextNode(driversNeeded(numberOfDeliveries));
-        cell.appendChild(cellText);
-        row.appendChild(cell);
+          //code to generate number of drivers
+          var cell = document.createElement("td");
+          var cellText = document.createTextNode(driversNeeded(numberOfDeliveries));
+          cell.appendChild(cellText);
+          row.appendChild(cell);
 
-        //add the row to the end of the table body
-        tblBody.appendChild(row);
-    }
+          //add the row to the end of the table body
+          tblBody.appendChild(row);
+      }
       // //add in my table headers to do later
       // tblHead = document.createElement();
       //put the <tbody> in the <table>
@@ -160,12 +202,19 @@ for (var k = 0; k < pizzaStores.locationNames.length; k++) {
       // tbl.setAttribute("border", "10");
   }
   // call generateTable();
-  generateTable();
+
   // my adding to DOM = pizzaCounter
   var counter = document.getElementById("totesPizzaBra");
   counter.textContent = pizzaCounter +  " happy Pizza Odysseys this week!";
 
 }
 
-// var counterIndexPage = document.getElementById('happyPizzaNumber');
-// counterIndexPage.textContent = " Happy Pizza Odysseys This Week!";
+
+for (var zz = 0; zz < pizzaArray.length; zz++) {
+  console.log(pizzaArray[zz].minMaxPizza.length);
+  for (var ii = 0; ii < pizzaArray[zz].minMaxPizza.length; ii++) {
+    console.log('min = ' +    pizzaArray[0].minMaxPizza[ii][0] + '  max = ' + pizzaArray[0].minMaxPizza[ii][1]);
+  }
+  generateTable(pizzaArray[zz].minMaxPizza[0][0],pizzaArray[zz].minMaxPizza[0][1]);
+
+}
