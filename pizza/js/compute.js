@@ -10,6 +10,8 @@ function driversNeeded(deliveries) {
   return resultDriversNeeded;
 }
 
+
+
 //testing the driversNeeded function
 console.log(driversNeeded(36));
 
@@ -19,10 +21,11 @@ console.log(driversNeeded(36));
 var pizzaArray = [];
 
 //contructor function to create a pizzaStores template
-function pizzaStoreConstructor(loc, pizzaRange, deliveriesRange, targetArray) {
+function pizzaStoreConstructor(loc, pizzaRange, deliveriesRange, pizzaCount, targetArray) {
   this.loc = loc;
   this.minMaxPizza = pizzaRange;
   this.minMaxDeliveries = deliveriesRange;
+  this.pizzaCount = 0;
   targetArray.push(this);
 }
 //constructor for beverton specific store
@@ -36,20 +39,20 @@ var bevertonStore = new pizzaStoreConstructor("beverton", [[0,4],[0,4],[0,4],
                                 [1,4],[1,4],[1,4],
                                 [3,8],[3,8],[3,8],
                                 [5,12],[5,12],[5,12],
-                                [6,11],[6,11],[6,11]], pizzaArray);
-//constructor for hillsboro specific store
-var hillsboroStore = new pizzaStoreConstructor("hillsboro", [[1,3],[1,3],[1,3],
-                                [5,9],[5,9],[5,9],
-                                [2,13],[2,13],[2,13],
-                                [18,32],[18,32],[18,32],
-                                [1,3],[1,3],[1,3],
-                                [8,20],[8,20],[8,20]], [[1,7],[1,7],[1,7],
-                                [2,8],[2,8],[2,8],
-                                [1,6],[1,6],[1,6],
-                                [3,9],[3,9],[3,9],
-                                [5,12],[5,12],[5,12],
-                                [6,16],[6,16],[6,16]], pizzaArray);
-
+                                [6,11],[6,11],[6,11]], 0, pizzaArray);
+// //constructor for hillsboro specific store
+// var hillsboroStore = new pizzaStoreConstructor("hillsboro", [[1,3],[1,3],[1,3],
+//                                 [5,9],[5,9],[5,9],
+//                                 [2,13],[2,13],[2,13],
+//                                 [18,32],[18,32],[18,32],
+//                                 [1,3],[1,3],[1,3],
+//                                 [8,20],[8,20],[8,20]], [[1,7],[1,7],[1,7],
+//                                 [2,8],[2,8],[2,8],
+//                                 [1,6],[1,6],[1,6],
+//                                 [3,9],[3,9],[3,9],
+//                                 [5,12],[5,12],[5,12],
+//                                 [6,16],[6,16],[6,16]], 0, pizzaArray);
+//
 // //constructor for the downtown specific store
 // var downtownStore = new pizzaStoreConstructor("downtown", [[0,4],[0,4],[0,4],
 //                                 [0,7],[0,7],[0,7],
@@ -61,7 +64,7 @@ var hillsboroStore = new pizzaStoreConstructor("hillsboro", [[1,3],[1,3],[1,3],
 //                                 [1,4],[1,4],[1,4],
 //                                 [4,6],[4,6],[4,6],
 //                                 [7,15],[7,15],[7,15],
-//                                 [2,8],[2,8],[2,8]], pizzaArray);
+//                                 [2,8],[2,8],[2,8]], 0, pizzaArray);
 // //constructor for the northeast specific store
 // var northeastStore = new pizzaStoreConstructor("northeast", [[0,4],[0,4],[0,4],
 //                                 [0,7],[0,7],[0,7],
@@ -73,7 +76,7 @@ var hillsboroStore = new pizzaStoreConstructor("hillsboro", [[1,3],[1,3],[1,3],
 //                                 [0,4],[0,4],[0,4],
 //                                 [13,18],[13,18],[13,18],
 //                                 [5,22],[5,22],[5,22],
-//                                 [16,31],[16,31],[16,31]], pizzaArray);
+//                                 [16,31],[16,31],[16,31]], 0, pizzaArray);
 //
 // //constructor for the clackamas specific store
 // var clackamasStore = new pizzaStoreConstructor("clackamas", [[2,7],[2,7],[2,7],
@@ -86,7 +89,7 @@ var hillsboroStore = new pizzaStoreConstructor("hillsboro", [[1,3],[1,3],[1,3],
 //                                 [1,4],[1,4],[1,4],
 //                                 [2,4],[2,4],[2,4],
 //                                 [15,42],[15,42],[15,42],
-//                                 [6,21],[6,21],[6,21]], pizzaArray);
+//                                 [6,21],[6,21],[6,21]], 0, pizzaArray);
 //
 // //constructor for the pdxAirport specific store
 // var pdxAirportStore = new pizzaStoreConstructor("pdxAirport", [[2,7],[2,7],[2,7],
@@ -99,7 +102,7 @@ var hillsboroStore = new pizzaStoreConstructor("hillsboro", [[1,3],[1,3],[1,3],
 //                                 [1,4],[1,4],[1,4],
 //                                 [2,4],[2,4],[2,4],
 //                                 [15,42],[15,42],[15,42],
-//                                 [6,21],[6,21],[6,21]], pizzaArray);
+//                                 [6,21],[6,21],[6,21]], 0, pizzaArray);
 
 
 //object of pizzaStores
@@ -133,8 +136,12 @@ var timeStamps = ["8a-9a", "9a-10a","10a-11a", "11a-12p", "12p-1p", "1p-2p", "2p
 // var testDelivery = document.getElementById("testTwo");
 // testDelivery.textContent = "random number between 20 and 30 is " + randoInRange(20,30);
 
+
+
 //generateTable() function to generate tables.
 function generateTable(storeObject) {
+      var pizzaCount = 0;
+
       //get the reference for the body
       var body = document.getElementsByTagName("body")[0];
 
@@ -169,14 +176,6 @@ function generateTable(storeObject) {
       var colHead = document.createElement("tr");
       tblHead.appendChild(colHead);
 
-      //creates the table footer tfoot and puts it in the table body
-      var tblFoot = document.createElement("tfoot");
-      var footerText = document.createTextNode("pizzaSum");
-      tbl.appendChild(tblFoot);
-      //append text to footer
-
-
-
       //creates the <th>s in the colHead <tr>
         for (var j = 0; j < pizzaStores.colHeadings.length; j++) {
           //creates the <th>s in the colHead <tr>
@@ -201,6 +200,8 @@ function generateTable(storeObject) {
           //code to generate number of pizzas
           var cell = document.createElement("td");
           var numberOfPizzas = randoInRange(storeObject.minMaxPizza[i][0],storeObject.minMaxPizza[i][1]);
+          storeObject.pizzaCount = storeObject.pizzaCount + numberOfPizzas;
+          console.log(storeObject.pizzaCount);
           var cellText = document.createTextNode(numberOfPizzas);
           cell.appendChild(cellText);
           row.appendChild(cell);
@@ -246,7 +247,7 @@ function generateTable(storeObject) {
 
 // my adding to DOM = pizzaCounter
 var counter = document.getElementById("totesPizzaBra");
-counter.textContent = "NNN happy Pizza Odysseys this week!";
+counter.textContent = pizzaStoreConstructor.pizzaCount + " happy Pizza Odysseys this week!";
 
 
 
