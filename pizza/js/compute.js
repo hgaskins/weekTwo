@@ -4,20 +4,6 @@ function randoInRange(min, max) {
   return result;
 }
 
-var pizzaCounter = 0;
-
-//to test randoInRange() fucntion
-console.log(randoInRange(1,3));
-
-// // function for randoInRange()
-// function randoInRange(minD, maxD) {
-//   var resultrandoInRange = Math.floor(Math.random() * ((maxD-minD)+1) + minD);
-//   return resultrandoInRange;
-// }
-
-//to test randoInRange() function
-console.log(randoInRange(12, 14));
-
 //function for drivers needed based on deliveries given
 function driversNeeded(deliveries) {
   var resultDriversNeeded = Math.ceil(deliveries/3);
@@ -175,12 +161,21 @@ function generateTable(storeObject) {
       // // console.log(r.locationNames[i]);
       var locName = document.createTextNode(storeObject.loc);
       shopLoc.appendChild(locName);
+      //test for storeObject.loc display
       console.log(storeObject.loc);
 
 
       //creates the colHead <tr> and puts it in <thead>
       var colHead = document.createElement("tr");
       tblHead.appendChild(colHead);
+
+      //creates the table footer tfoot and puts it in the table body
+      var tblFoot = document.createElement("tfoot");
+      var footerText = document.createTextNode("pizzaSum");
+      tbl.appendChild(tblFoot);
+      //append text to footer
+
+
 
       //creates the <th>s in the colHead <tr>
         for (var j = 0; j < pizzaStores.colHeadings.length; j++) {
@@ -206,7 +201,6 @@ function generateTable(storeObject) {
           //code to generate number of pizzas
           var cell = document.createElement("td");
           var numberOfPizzas = randoInRange(storeObject.minMaxPizza[i][0],storeObject.minMaxPizza[i][1]);
-          pizzaCounter = pizzaCounter + numberOfPizzas;
           var cellText = document.createTextNode(numberOfPizzas);
           cell.appendChild(cellText);
           row.appendChild(cell);
@@ -228,6 +222,7 @@ function generateTable(storeObject) {
           //add the row to the end of the table body
           tblBody.appendChild(row);
       }
+
       // //add in my table headers to do later
       // tblHead = document.createElement();
       //put the <tbody> in the <table>
@@ -251,7 +246,7 @@ function generateTable(storeObject) {
 
 // my adding to DOM = pizzaCounter
 var counter = document.getElementById("totesPizzaBra");
-counter.textContent = pizzaCounter +  " happy Pizza Odysseys this week!";
+counter.textContent = "NNN happy Pizza Odysseys this week!";
 
 
 
