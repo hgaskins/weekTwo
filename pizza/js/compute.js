@@ -178,7 +178,7 @@ function generateTable(storeObject) {
           //code to generate number of pizzas
           var cell = document.createElement("td");
           var numberOfPizzas = randoInRange(storeObject.minMaxPizza[i][0],storeObject.minMaxPizza[i][1]);
-          storeObject.pizzaCount = storeObject.pizzaCount + numberOfPizzas;
+          storeObject.pizzaCount += numberOfPizzas;
           // this.numPizzaz.push(numberOfPizzas);
           console.log(storeObject.pizzaCount);
           var cellText = document.createTextNode(numberOfPizzas);
@@ -202,7 +202,6 @@ function generateTable(storeObject) {
           //add the row to the end of the table body
           tblBody.appendChild(row);
       }
-
       //append the row that shows total
 
       //put the <tbody> in the <table>
@@ -217,8 +216,24 @@ function generateTable(storeObject) {
 var counter = document.getElementById("totesPizzaBra");
 counter.textContent = pizzaStoreConstructor.pizzaCount + " happy Pizza Odysseys this week!";
 
-
+function pizzaTotalCounter () {
+    var totalPizzaCount = 0;
+    for (var tt = 0; tt < pizzaArray.length; tt++) {
+        totalPizzaCount += pizzaArray[tt].pizzaCount;
+    }
+    return totalPizzaCount;
+}
 
 for (var qq = 0; qq < pizzaArray.length; qq++) {
   generateTable(pizzaArray[qq]);
 }
+
+console.log('total pizzas == ' ,pizzaTotalCounter());
+
+
+// Event hanlder for the form button
+var submitButtonCheck = document.getElementById('submitButton');
+submitButtonCheck.addEventListener("click", function () {
+    var newStoreName = document.getElementById('storeName').value
+    console.log (newStoreName);
+});
