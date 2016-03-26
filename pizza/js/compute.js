@@ -10,8 +10,6 @@ function driversNeeded(deliveries) {
   return resultDriversNeeded;
 }
 
-
-
 //testing the driversNeeded function
 console.log(driversNeeded(36));
 
@@ -34,17 +32,25 @@ function pizzaStoreConstructor(loc, pizzaRange, deliveriesRange, pizzaCount, tar
   targetArray.push(this);
 }
 //constructor for beverton specific store
-var bevertonStore = new pizzaStoreConstructor("beverton", [[0,4],[0,4],[0,4],
+var bevertonStore = new pizzaStoreConstructor("beverton",
+
+                                [[0,4],[0,4],[0,4], //pizzaRange
                                 [0,7],[0,7],[0,7],
                                 [2,15],[2,15],[2,15],
                                 [15,35],[15,35],[15,35],
                                 [12,31],[12,31],[12,31],
-                                [5,20],[5,20],[5,20]], [[0,4],[0,4],[0,4],
+                                [5,20],[5,20],[5,20]],
+
+                                [[0,4],[0,4],[0,4], //deliveriesRange
                                 [0,4],[0,4],[0,4],
                                 [1,4],[1,4],[1,4],
                                 [3,8],[3,8],[3,8],
                                 [5,12],[5,12],[5,12],
-                                [6,11],[6,11],[6,11]], 0, pizzaArray);
+                                [6,11],[6,11],[6,11]],
+
+                                0, //pizzaCount
+
+                                pizzaArray);
 //constructor for hillsboro specific store
 var hillsboroStore = new pizzaStoreConstructor("hillsboro", [[1,3],[1,3],[1,3],
                                 [5,9],[5,9],[5,9],
@@ -220,10 +226,13 @@ function generateTable(storeObject) {
       // tbl.setAttribute("border", "10");
   }
 
-// my adding to DOM = pizzaCounter
-var counter = document.getElementById("totesPizzaBra");
-counter.textContent = pizzaStoreConstructor.pizzaCount + " happy Pizza Odysseys this week!";
+for (var qq = 0; qq < pizzaArray.length; qq++) {
+  generateTable(pizzaArray[qq]);
+}
 
+
+
+//calculates total pizza count for each store
 function pizzaTotalCounter () {
     var totalPizzaCount = 0;
     for (var tt = 0; tt < pizzaArray.length; tt++) {
@@ -238,7 +247,7 @@ function weeklyTimeSlotTotals () {
         results[dd] = 0; // initializing array to zero
     }
     for (ww in pizzaArray) {
-        for (zz =0; zz < 18; zz++) {
+        for (zz = 0; zz < 18; zz++) {
             results[zz] += pizzaArray[ww].numPizzaz[zz];
         }
     }
@@ -246,16 +255,49 @@ function weeklyTimeSlotTotals () {
     return results;
 }
 
-for (var qq = 0; qq < pizzaArray.length; qq++) {
-  generateTable(pizzaArray[qq]);
-}
+//to test pizzaTotalCounter
+// console.log('total pizzas == ' ,pizzaTotalCounter());
 
-console.log('total pizzas == ' ,pizzaTotalCounter());
 
+// my adding to DOM = pizzaCounter
+var counter = document.getElementById("totesPizzaBra");
+counter.textContent =   pizzaTotalCounter() +" happy Pizza Odysseys this week!";
+
+// var counterB = document.getElementById("beverton");
+// counterB.textContent = weeklyTimeSlotTotals
 
 // Event hanlder for the form button
-var submitButtonCheck = document.getElementById('submitButton');
-submitButtonCheck.addEventListener("click", function () {
-    var newStoreName = document.getElementById('storeName').value
-    console.log (newStoreName);
+var submitStoreName = document.getElementById('submitButton');
+
+submitStoreName.addEventListener("click", function () {
+
+    //gets new name from the form input
+    var newStoreName = document.getElementById('storeName').value;
+
+    //empty array to store in the new store data
+    var newStoreArray = [];
+
+    //processing window to then push after eventListener
+    newStoreArray.push(newStoreName);    // newStoreArray[0]
+    newStoreArray.push(pizzaArray[0].minMaxPizza);    // newStoreArray[1]
+    newStoreArray.push(pizzaArray[0].minMaxDeliveries);    // newStoreArray[2]
+    newStoreArray.push(pizzaArray[0].pizzaCount);    // newStoreArray[3]
+    newStoreArray.push(pizzaArray);    // newStoreArray[4]
+
+
+    //make new object with data from newStoreArray --> which was stolen from beverton data
+    var userInputStore = new pizzaStoreConstructor(newStoreArray[0], newStoreArray[1], newStoreArray[2], newStoreArray[3], newStoreArray[4]);
+
+    pizzaArray.push(userInputStore);
+
+    console.log(newStoreArray);
+
+    generateTable(userInputStore);
+
+
+    console.log (newStoreArray);
+    // generateTable(bevertonStore);
+  //call constructor with newStore informtion inside
+  //var StJohns = new pizzaStoreConstructor(newStoreArray[0], newStoreArray[1]....);
+  //then generateTable(StJohns);
 });
