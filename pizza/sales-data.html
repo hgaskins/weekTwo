@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html lang="eng">
   <head>
+    <title>SalesData</title>
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,700,300' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales-Data</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-      <header class="main-header">
+      <div class="wrap">
+        <header class="main-header">
+          <div class="container">
+            <nav class="main-nav">
+              <a href="index.html">HOME</a>
+            </nav>
+            <h1 class="name">Sales-Data</h1>
+            <h2 id="totesPizzaBra">Total Pizzas = </h2>
+          </div>
+        </header>
         <div class="container">
-          <nav>
-            <a href="index.html">home</a>
-          </nav>
-          <h1 class="name">Sales-Data</h1>
-          <h2 id="totesPizzaBra">Total Pizzas = </h2>
-        </div>
-      </header>
-      <div class="container">
-        <h4 id="beverton">input</h4>
-        <h3 id="beverton"></h3>
+          <h4 id="beverton">input</h4>
+          <h3 id="beverton"></h3>
 
-        <div id="storeTables">
-        </div>
-        <div id="formCol1">
-            <label for="storeName">Store Name:</label>
-            <input id="storeName" class="input" value="St. Johns">
-            <input id="submitButton" type="button" class="button" value="submit">
+          <div id="storeTables">
+          </div>
+          <div id="formCol1">
+              <label for="storeName">Store Name:</label>
+              <input id="storeName" class="input" value="St. Johns">
+              <input id="submitButton" type="button" class="button" value="submit">
+          </div>
+
         </div>
       </div>
       <footer class="main-footer">
-        <span>&copy;2016 Pizza 3001</span>
+        <span>scroll down to see sales data per store</span>
       </footer>
-    <!-- linking scripts to page -->
-    <script src="js/app.js"></script>
-    <script src="js/compute.js"></script>
+
+      <!-- linking scripts to page -->
+      <script src="js/app.js"></script>
+      <script src="js/compute.js"></script>
+
+
   </body>
 </html>

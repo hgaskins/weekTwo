@@ -3,17 +3,58 @@
 ============================= */
 
 body {
+  font-family: 'Nunito', sans-serif;
   line-height: 1.6;
   color: #3a3a3a;
+  background-color: #999;
+}
+
+p {
+	font-size: .95em;
+	margin-bottom: 1.5em;
 }
 
 h1 {
   margin-top: 0;
+  color: #fff;
+}
+
+h2 {
+  color: #fff;
+}
+h3,
+a {
+	color: #4C4C4C;
+}
+
+h2,
+h3 {
+	margin-top: 30px;
+  padding: 10px;
+}
+
+h4 {
+  font-size: .75em;
+}
+
+/* changes to this element include: default position, margin, padding, color, background-color, opacity, addition of visible border with color, thinckness and radius*/
+
+h5 {
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  background-color: #CC8F8F;
+  color: #4C4C4C;
+  border: 5px solid #4C4C4C;
+  border-radius: 15px;
+  opacity: 0.8;
+  margin: 30px;
+  padding: 10px;
+
 }
 
 a {
-  color: #fff;
-  text-decoration: none;
+	text-decoration: none;
 }
 
 /* ===========================
@@ -26,26 +67,62 @@ a {
 
 /* ------- Navigation ------- */
 
-.name {
-  margin: 0;
-}
+
 
 /* --- Layout Containers --- */
 
 .container {
   padding-left: 1em;
   padding-right: 1em;
+  margin: 0 auto;
+  align-items: center;
+
 }
 
 .main-header {
-  background: #3acec2;
+  background: #4C4C4C;
+  margin: 0 auto;
+  padding: 50px;
+  text-align: center;
+}
+
+.image-container {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+}
+
+img {
+  border: 5px solid #4C4C4C;
+  border-radius: 200px;
+  opacity: 0.9;
+}
+
+.locations-container {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.item-1,
+.item-2,
+.item-3,
+.item-4,
+.item-5,
+.item-6 {
+  padding: 10px 20px;
 }
 
 .main-footer {
   text-align: center;
   padding: 2em 0;
-  background: #d9e4ea;
+  background: #CCCCCC;
 }
+
+
 
 /*table styles--> hide on Index*/
 table {
@@ -56,10 +133,21 @@ table {
   Media Queries
 ============================= */
 
+/*for sticky footer*/
+.wrap {
+    min-height: calc(100vh - 89px);
+}
+
+/*mobile first preset*/
 @media (min-width: 769px) {
   .container {
-      width: 70%;
+      width: 80%;
       max-width: 1000px;
       margin: 0 auto;
     }
+
+    /*.name,
+    .main-nav, {
+      display: flex;
+    }*/
 }
