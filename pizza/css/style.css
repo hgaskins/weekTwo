@@ -33,6 +33,29 @@ h3 {
 a {
 	text-decoration: underline;;
 }
+
+/*the below elements are by default inline, and I have changed them to block*/
+
+.storeNameLabel,
+.input,
+.button {
+  display: block;
+  margin: 0 auto;
+}
+
+.storeNameLabel {
+  margin-bottom: 20px;
+}
+
+.input {
+  margin-bottom: 20px;
+}
+
+.button {
+  margin-bottom: 25px;
+  border: 2.5px solid #4C4C4C;
+  border-radius: 50px;
+}
 /* ===========================
   Base Layout Styles
 ============================= */
@@ -85,13 +108,13 @@ table {
 }
 th {
   font-weight: 500;
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Nunito', sans-serif;
   line-height: 1.6;
   font-size: 1.4em;
 }
 
 td {
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Nunito', sans-serif;
   line-height: 1.6;
 }
 

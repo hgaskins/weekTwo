@@ -10,6 +10,29 @@ function driversNeeded(deliveries) {
   return resultDriversNeeded;
 }
 
+//calculates total pizza count for each store
+function pizzaTotalCounter () {
+    var totalPizzaCount = 0;
+    for (var tt = 0; tt < pizzaArray.length; tt++) {
+        totalPizzaCount += pizzaArray[tt].pizzaCount;
+    }
+    return totalPizzaCount;
+}
+
+function weeklyTimeSlotTotals() {
+    var results = [];
+    for (dd = 0; dd < 18; dd++) {
+        results[dd] = 0; // initializing array to zero
+    }
+    for (ww in pizzaArray) {
+        for (zz = 0; zz < 18; zz++) {
+            results[zz] += pizzaArray[ww].numPizzaz[zz];
+        }
+    }
+    // console.log(results);
+    return results;
+}
+
 //testing the driversNeeded function
 console.log(driversNeeded(36));
 
@@ -224,6 +247,20 @@ function generateTable(storeObject) {
       body.appendChild(tbl);
       //sets the border attribute of the tbl to 2;
       // tbl.setAttribute("border", "10");
+
+      //append for table footer
+      var tblFoot = document.createElement("tfoot"); // creates <thead> and puts it in <table>
+      tbl.appendChild(tblFoot);
+
+      var totalFoot = document.createElement("tr"); // creates the shopHead <tr> and puts it in <thead>
+      tblFoot.appendChild(totalFoot);
+
+      var storeTotal = document.createElement("th"); // creates the <th> in the shopHead <tr>
+      storeTotal.setAttribute("colspan", "4"); // sets the colspan attribute of tbl to 4;
+      totalFoot.appendChild(storeTotal);
+
+      var total = document.createTextNode("This Store's Daily Total: " + storeObject.pizzaCount);
+      storeTotal.appendChild(total);
   }
 
 for (var qq = 0; qq < pizzaArray.length; qq++) {
@@ -232,36 +269,20 @@ for (var qq = 0; qq < pizzaArray.length; qq++) {
 
 
 
-//calculates total pizza count for each store
-function pizzaTotalCounter () {
-    var totalPizzaCount = 0;
-    for (var tt = 0; tt < pizzaArray.length; tt++) {
-        totalPizzaCount += pizzaArray[tt].pizzaCount;
-    }
-    return totalPizzaCount;
-}
+// my adding to DOM = pizzaCounter
+var counter = document.getElementById("totesPizzaBra");
+counter.textContent =   pizzaTotalCounter() + " happy Pizza Odysseys this week!";
 
-function weeklyTimeSlotTotals () {
-    var results = [];
-    for (dd = 0; dd < 18; dd++) {
-        results[dd] = 0; // initializing array to zero
-    }
-    for (ww in pizzaArray) {
-        for (zz = 0; zz < 18; zz++) {
-            results[zz] += pizzaArray[ww].numPizzaz[zz];
-        }
-    }
-    console.log(results);
-    return results;
-}
+var weekOfPizza = document.getElementById('weeklies');
+weekOfPizza.textContent = weeklyTimeSlotTotals() + " are the weekly time slot total number of pizzas sold";
+
+// weekOfPizza.textContent = weeklyTimeSlotTotals;
 
 //to test pizzaTotalCounter
 // console.log('total pizzas == ' ,pizzaTotalCounter());
 
 
-// my adding to DOM = pizzaCounter
-var counter = document.getElementById("totesPizzaBra");
-counter.textContent =   pizzaTotalCounter() +" happy Pizza Odysseys this week!";
+
 
 // var counterB = document.getElementById("beverton");
 // counterB.textContent = weeklyTimeSlotTotals
