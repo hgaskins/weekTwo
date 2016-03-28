@@ -259,7 +259,7 @@ function generateTable(storeObject) {
       storeTotal.setAttribute("colspan", "4"); // sets the colspan attribute of tbl to 4;
       totalFoot.appendChild(storeTotal);
 
-      var total = document.createTextNode("This Store's Daily Total: " + storeObject.pizzaCount);
+      var total = document.createTextNode("total pizzas sold by " + storeObject.loc + " : " + storeObject.pizzaCount);
       storeTotal.appendChild(total);
   }
 

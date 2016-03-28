@@ -53,6 +53,14 @@ h5 {
 
 }
 
+/* h6 is an element that is by default block and here I have made it inline and
+they are now placed next to each other*/
+
+h6 {
+  display: inline;
+  font-size: 1.2em;
+}
+
 a {
 	text-decoration: none;
 }
