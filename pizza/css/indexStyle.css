@@ -62,7 +62,13 @@ h6 {
 }
 
 a {
-	text-decoration: none;
+	text-decoration: underline;;
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+  padding: 100;
+
+
 }
 
 /* ===========================
